@@ -5,15 +5,16 @@ let Attribute = require("@jatahworx/bhive-toolkits").Attribute;
 
 module.exports = class AdvancedMenu extends AdvancedComponent {
   constructor() {
-    const name = "ng-menu";
-    const designerTemplate = `<ng-menu onclick="click(event)" component-label="Menu" class="ad-element" style="max-width: 20%;border: 1px dashed #ccc !important;">
+    const name = "advanced-menu-neosme";
+    const designerTemplate = `<advanced-menu-neosme onclick="click(event)" component-label="Menu" class="ad-element" style="max-width: 20%;border: 1px dashed #ccc !important;">
           <div class="inline-block" style="display: flex;position: absolute!important;padding: 2px;border-radius: 10px;right: 45%;z-index: 1;bottom: -13px;cursor: pointer;">
               <div class=\"min-fab-icon fab-icons-container\" style="width: 16px;height: 16px;"> <i id="add" class="material-icons component-placeholder" style="font-size: 16px;">add</i></div>
           </div>
-       </ng-menu>`;
+       </advanced-menu-neosme>`;
     const paletteTemplate = "Menu";
     const componentLabel = 'Menu';
     const templateUrl = "https://material.angular.io/components/menu/overview";
+    let randomTemp = []
 
     super(
       {
@@ -56,8 +57,13 @@ module.exports = class AdvancedMenu extends AdvancedComponent {
         templateUpdater: {
           preRender: () => {
             let randomId = "id" + Math.random().toString(36).substr(2, 5);
-            let matMenuAttribute = this.getHtmlAttributes(this.htmlAttributes);
-              return matMenuAttribute['matMenu']._value = randomId;
+            let isPresent = randomTemp.find(o => o === randomId);
+            if(isPresent){
+              return isPresent;
+            }else{
+              randomTemp.push(randomId);
+              return randomId;
+            }
           }
         }
       })
@@ -139,7 +145,7 @@ module.exports = class AdvancedMenu extends AdvancedComponent {
       customMethods: {
         click: function (e) {
           if (e.target.id === "add") {
-            this.addChild("ng-menu-item");
+            this.addChild("advanced-menu-item-neosme");
           }
         },
       }
@@ -148,7 +154,7 @@ module.exports = class AdvancedMenu extends AdvancedComponent {
   
   get template() {
     let template = '';
-    template = `<mat-menu %bCustomProps% %style% %class% %xPosition% %yPosition% %backdropClass% %panelClass% #%matMenu%=matMenu %hasBackdrop% %overlapTrigger% %direction%>%MenuName%</mat-menu>`;
+    template = `<mat-menu %style% %class% %xPosition% %yPosition% %backdropClass% %panelClass% #%matMenu%=matMenu %hasBackdrop% %overlapTrigger% %direction%>%MenuName%</mat-menu>`;
     return template;
   }
   set template(templateString) { }

@@ -1,11 +1,9 @@
 {
-    "name":"advanced-menu",
-    "version":"1.0.0",
-    "displayName":"Advanced Menu",
-    "type":"Components",
-    "publisher":"Neutrinos",
-    "platformSupportVersion":"6.2.1",
-    "packageType":"studio-package",
-    "dependencies": [
-    ]
-  }
+  "name":"advanced-menu-component-neosme",
+  "version":"1.0.0",
+  "displayName":"Advanced Menu",
+  "type":"Components",
+  "publisher":"Neutrinos",
+  "platformSupportVersion":"6.2.1",
+  "packageType":"studio-package"
+}

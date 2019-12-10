@@ -4,12 +4,12 @@ let AdvancedComponent = require("@jatahworx/bhive-toolkits").AdvancedComponent;
 
 module.exports = class AdvancedMenuItem extends AdvancedComponent {
   constructor() {
-    const name = 'ng-menu-item';
-    const designerTemplate = `<ng-menu-item id="menuItem" onclick="click(event)" slot="Menus" class=\"drop display-block\" component-label="Menu Item" block-copy style="min-width: 319px;padding-left: 0px !important;padding-right: 0px !important;margin: 0px !important;background: none !important;">
+    const name = 'advanced-menu-item-neosme';
+    const designerTemplate = `<advanced-menu-item-neosme onclick="click(event)" slot="Menus" class=\"drop display-block\" component-label="Menu Item" block-copy style="min-width: 319px;padding-left: 0px !important;padding-right: 0px !important;margin: 0px !important;background: none !important;">
         <div class="inline-block" style="display: flex;position: absolute !important;padding: 2px;border-radius: 10px;right: 10%;z-index: 1;bottom: -16px;top: 5px;cursor: pointer;">  
           <div class=\"min-fab-icon fab-icons-container\" style="width: 16px !important;height: 16px !important;"> <i id="addsubmenuaction" class="material-icons component-placeholder" style="font-size: 16px;">add</i></div>
         </div>
-      </ng-menu-item>`;
+      </advanced-menu-item-neosme>`;
     const paletteTemplate = 'Menu Item';
     const componentLabel = 'Menu Item';
     const templateUrl = 'https://material.angular.io/components/menu/overview';
@@ -33,6 +33,7 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
         type: 'kv',
       })
     );
+
     super.addAttribute(
       new Attribute({
         key: '[disabled]',
@@ -40,6 +41,7 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
         type: 'kv',
       })
     );
+
     super.addAttribute(
       new Attribute({
         key: 'role',
@@ -47,6 +49,7 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
         type: 'kv',
       })
     );
+
     super.addAttribute(
       new Attribute({
         key: 'MenuName',
@@ -55,11 +58,14 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
         useAsLabel: true
       })
     );
-    super.addAttribute(new Attribute({
+
+    super.addAttribute(
+      new Attribute({
       key: 'color',
       value: '',
       type: 'kv'
     }));
+
     super.addAttribute(
       new Attribute({
         key: '[matMenuTriggerFor]',
@@ -82,9 +88,6 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
               display: flex;
               flex-direction: column;
             }
-            #menuItem{
-              background: none !important;
-            }
             `,
       slotsTemplate: `   
             <div class="parent_card">
@@ -99,15 +102,9 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
       customMethods: {
         click: function (e) {
           if (e.target.id === "addsubmenuaction") {
+            // Todo: When click to add, the sub menu item should add 
           } else if (e.target.id === "editaction") {
             // Todo: When click to edit, the menu item template need to change as input item label 
-            let template = '';
-            template = `
-                  <div class="ad-textfield form-control-button ad-height">
-                    <span class="component-placeholder">Input</span>
-                  </div>
-                `
-            return template
           }
         },
       }
@@ -116,7 +113,7 @@ module.exports = class AdvancedMenuItem extends AdvancedComponent {
 
   get template() {
     // UI for user
-    const template = `<button mat-menu-item %style% %class% %bCustomProps% %color% %[disabled]% %[disableRipple]% %role% %[matMenuTriggerFor]%>%MenuName%</button>`;
+    const template = `<button mat-menu-item %style% %class% %color% %[disabled]% %[disableRipple]% %role% %[matMenuTriggerFor]%>%MenuName%</button>`;
     return template;
   }
 
